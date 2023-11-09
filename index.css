@@ -1,0 +1,182 @@
+body {
+  --bg-color: #2d3636;
+  --bg-size: 20px;
+  --bg-position: calc(var(--bg-size) / 2);
+  --main-text-color: snow;
+  --primary-color: rebeccapurple;
+  --rad-color: #353d3d;
+  --rad-percent: 30%;
+  --secondary-color: darkslategrey;
+
+  color: var(--main-text-color);
+  font-family: "Fira Sans", sans-serif;
+  background-color: var(--bg-color);
+  background-image:
+    radial-gradient(var(--rad-color) var(--rad-percent), transparent 0%),
+    radial-gradient(var(--rad-color) var(--rad-percent), transparent 0%);
+  background-position: 0 0, var(--bg-position) var(--bg-position);
+  background-size: var(--bg-size) var(--bg-size);
+  text-align: center;
+}
+
+h1 {
+  font-family: "Fira Mono", monospace;
+  font-size: 5em;
+  margin: 0;
+}
+
+h1 span {
+  --rotation: 3deg;
+  display: inline-block;
+  margin: 0 -0.3em;
+  padding: 0.15em;
+}
+
+h1 span:nth-of-type(odd) {
+  background: var(--primary-color);
+  transform: rotate(calc(var(--rotation) * -1));
+}
+
+h1 span:nth-of-type(even) {
+  background: var(--secondary-color);
+  transform: rotate(var(--rotation));
+}
+
+h2 {
+  font-family: "Satisfy", cursive;
+  font-size: 4em;
+  margin: 0.1em 0;
+}
+
+h3 {
+  font-family: "Sriracha", cursive;
+  font-size: 3em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+h4 {
+  font-family: "Kaushan Script", cursive;
+  font-size: 2.5em;
+  margin: 0;
+}
+
+p {
+  font-size: 2em;
+  margin: 0;
+}
+
+.menu {
+  background-color: var(--primary-color);
+  display: grid;
+  margin: 2em auto;
+  padding: 2em 1em;
+  position: relative;
+  row-gap: 2em;
+  width: 32em;
+}
+
+.menu::before {
+  background-color: var(--secondary-color);
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 2em;
+  transform: rotate(-3deg);
+  z-index: -1;
+}
+
+.item {
+  margin-bottom: 1em;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+/* WIDE SCREENS / PRINT */
+@media (min-width: 1024px),
+print {
+  .menu {
+    width: 60em;
+  }
+
+  .menu::before {
+    transform: rotate(-6deg);
+  }
+
+  .course {
+    column-gap: 2em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .course h3 {
+    grid-column: 1 / span 2;
+  }
+}
+
+/* PRINT */
+@media print {
+  body {
+    background-color: white;
+    background-image: none;
+    color: black;
+  }
+
+  h1 {
+    font-family: "Fira Sans", sans-serif;
+    font-size: 48px;
+  }
+
+  h1 span {
+    background-color: white !important;
+    margin: 0;
+    padding: 0;
+    transform: none !important;
+  }
+
+  h2 {
+    font-size: 40px;
+    margin: 0;
+  }
+
+  h3 {
+    font-size: 36px;
+  }
+
+  h4 {
+    font-size: 32px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+
+  .header-icon,
+  #dark_toggle+label {
+    display: none !important;
+  }
+
+  .menu {
+    background-color: white;
+    margin: 0 auto;
+    padding: 0;
+    row-gap: 24px;
+    width: 100%;
+  }
+
+  .menu::before {
+    display: none;
+  }
+
+  .course {
+    column-gap: 24px;
+  }
+
+  .item {
+    margin-bottom: 16px;
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+}
